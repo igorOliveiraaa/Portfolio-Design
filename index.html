@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Profissional de Igor</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+            background-color: #fff;
+            scroll-behavior: smooth; 
+        }
+
+        /* Navbar */
+        header {
+            position: fixed;
+            width: 100%;
+            background: rgba(255, 255, 255, 0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: background 0.3s;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 700;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 100%;
+            height: 2px;
+            background: #0bb0da; 
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #0bb0da;
+        }
+
+        .navbar a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(to bottom right, #e0f7fa, #80deea); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            width: 100%;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero .cta-button {
+            background-color: #0bb0da; 
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 15px rgba(43, 149, 194, 0.3);
+        }
+
+        .hero .cta-button:hover {
+            background-color: #0bb0da; 
+        }
+
+        .section {
+            padding: 5rem 2rem;
+            background-color: #f9f9f9;
+        }
+
+        .section:nth-of-type(even) {
+            background-color: #e6f2f5; 
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            color: #0bb0da;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: #0bb0da;
+        }
+
+        .social-media-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .social-link {
+            background-color: #fff;
+            color: #0bb0da;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .grid-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s;
+        }
+
+        .grid-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .grid-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .grid-item:hover::after {
+            opacity: 1;
+        }
+
+        footer {
+            background-color: #0bb0da;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .navbar ul {
+                flex-direction: column;
+                background: rgba(255, 255, 255, 0.95);
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100% - 70px);
+                transition: left 0.3s;
+                padding-top: 2rem;
+            }
+
+            .navbar ul.active {
+                left: 0;
+            }
+
+            .navbar .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 2rem;
+                cursor: pointer;
+            }
+
+            .navbar .menu-toggle div {
+                width: 30px;
+                height: 3px;
+                background: #333;
+                margin: 6px 0;
+                transition: all 0.3s;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#logos">Logos</a></li>
+                <li><a href="#redes-sociais">Redes Sociais</a></li>
+                <li><a href="#banners-faixas">Banners e Faixas</a></li>
+                <li><a href="#appsesites">Apps e Sites</a></li>
+                <li><a href="#grafica">Gráfica</a></li>
+                <li><a href="#outros">Outros</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Bem-vindo ao meu Portfólio Profissional!</h1>
+            <p>Descubra meus trabalhos em design gráfico e projetos recentes.</p>
+            <a href="#redes-sociais" class="cta-button">Explorar</a>
+        </div>
+    </section>
+
+    <section id="redes-sociais" class="section">
+        <h2>Redes Sociais</h2>
+        <div class="social-media-grid">
+            <a href="https://www.instagram.com/igoroliveira_____/profilecard/?igsh=bXpkYW1obHB0Z2Nn" class="social-link">Instagram</a>
+            <a href="https://www.linkedin.com/in/igor-oliveira-9801a126a/" class="social-link">LinkedIn</a>
+        </div>
+    </section>
+
+    <section id="logos" class="section">
+        <h2>Logos</h2>
+        <div class="grid">
+            <div class="grid-item"><img src="./logos/1.png" alt="Logo"></div>
+            <div class="grid-item"><img src="./logos/2.png" alt="Logo"></div>
+            <div class="grid-item"><img src="./logos/3.png" alt="Logo"></div>
+            <div class="grid-item"><img src="./logos/4.png" alt="Logo"></div>
+            <div class="grid-item"><img src="./logos/5.png" alt="Logo"></div>
+            <div class="grid-item"><img src="./logos/6.png" alt="Logo"></div>
+            <div class="grid-item"><img src="./logos/7.png" alt="Logo"></div>
+            <div class="grid-item"><img src="./logos/8.png" alt="Logo"></div>
+            <div class="grid-item"><img src="./logos/9.png" alt="Logo"></div>
+            <div class="grid-item"><img src="./logos/10.png" alt="Logo"></div>
+            <div class="grid-item"><img src="./logos/11.png" alt="Logo"></div>
+            <div class="grid-item"><img src="./logos/12.png" alt="Logo"></div>
+            <div class="grid-item"><img src="./logos/13.png" alt="Logo"></div>
+        </div>
+    </section>
+
+    <section id="banners-faixas" class="section">
+        <h2>Banners & Faixas</h2>
+        <div class="grid">
+            <div class="grid-item"><img src="./bannersefaixas/" alt="BannersFaixas"></div>
+            <!-- ... -->
+        </div>
+    </section>
+
+    <section id="appsesites" class="section">
+        <h2>Apps e Sites</h2>
+        <div class="grid">
+            <div class="grid-item"><img src="./appsesites/" alt="AppseSites"></div>
+            <!-- ... -->
+        </div>
+    </section>
+
+    <section id="grafica" class="section">
+        <h2>Gráfica</h2>
+        <div class="grid">
+            <div class="grid-item"><img src="./grafica/" alt="Grafica"></div>
+            <!-- ... -->
+        </div>
+    </section>
+
+    <section id="outros" class="section">
+        <h2>Outros</h2>
+        <div class="grid">
+            <div class="grid-item"><img src="./outros/" alt="Outros"></div>
+            <!-- ... -->
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Igor Oliveira. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 0);
+        });
+
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navbarUl = document.querySelector('.navbar ul');
+
+        menuToggle.addEventListener('click', () => {
+            navbarUl.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                if (navbarUl.classList.contains('active')) {
+                    navbarUl.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
