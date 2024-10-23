@@ -1,463 +1,488 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfólio Profissional de Igor</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            color: #333;
-            background-color: #fff;
-            scroll-behavior: smooth; 
-        }
+      body {
+        font-family: "Montserrat", sans-serif;
+        color: #333;
+        background-color: #fff;
+        scroll-behavior: smooth;
+      }
 
-        header {
-            position: fixed;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            transition: background 0.3s;
-        }
+      header {
+        position: fixed;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: background 0.3s;
+      }
 
+      .navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem 2rem;
+      }
+
+      .navbar ul {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .navbar a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 700;
+        position: relative;
+        transition: color 0.3s;
+      }
+
+      .navbar a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 100%;
+        height: 2px;
+        background: #0bb0da;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s;
+      }
+
+      .navbar a:hover {
+        color: #0bb0da;
+      }
+
+      .navbar a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      .hero {
+        height: 100vh;
+        background: linear-gradient(to bottom right, #e0f7fa, #80deea);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #333;
+        text-align: center;
+        padding: 0 1rem;
+      }
+
+      .hero-content {
+        max-width: 600px;
+        width: 100%;
+        animation: fadeIn 1.5s ease-in-out;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .hero .cta-button {
+        background-color: #0bb0da;
+        color: white;
+        padding: 1rem 2rem;
+        text-decoration: none;
+        border-radius: 50px;
+        font-size: 1.2rem;
+        transition: background-color 0.3s ease, transform 0.3s;
+        box-shadow: 0 4px 15px rgba(11, 176, 218, 0.3);
+      }
+
+      .hero .cta-button:hover {
+        background-color: #099abc;
+        transform: scale(1.05);
+      }
+
+      .section {
+        padding: 5rem 2rem;
+        background-color: #f9f9f9;
+      }
+
+      .section:nth-of-type(even) {
+        background-color: #e6f2f5;
+      }
+
+      .section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        position: relative;
+        color: #0bb0da;
+      }
+
+      .section h2::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: -10px;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: #0bb0da;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        padding: 0 1rem;
+        justify-items: center;
+      }
+
+      .grid-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        width: 200px;
+      }
+
+      .grid-item img {
+        width: 100%;
+        height: auto;
+        transition: transform 0.5s;
+      }
+
+      .grid-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .grid-item a {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .social-media-grid {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+      }
+
+      .social-link {
+        background-color: #fff;
+        color: #0bb0da;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-size: 1.2rem;
+        font-weight: 700;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .social-link:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      footer {
+        background-color: #0bb0da;
+        color: white;
+        padding: 2rem;
+        text-align: center;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
         .navbar {
-            display: flex;
-            justify-content: center; 
-            align-items: center;
-            padding: 1rem 2rem;
+          justify-content: space-between;
+          padding: 2rem;
+        }
+
+        .navbar .logo {
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: #0bb0da;
+          text-decoration: none;
         }
 
         .navbar ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-            align-items: center;
+          flex-direction: column;
+          background: rgba(255, 255, 255, 0.98);
+          position: fixed;
+          top: 0;
+          left: -100%;
+          width: 80%;
+          height: 100%;
+          transition: left 0.3s ease-in-out;
+          padding-top: 5rem;
+          align-items: center;
+          box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
         }
 
-        .navbar a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 700;
-            position: relative;
-            transition: color 0.3s;
+        .navbar ul.active {
+          left: 0;
         }
 
-        .navbar a::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 100%;
-            height: 2px;
-            background: #0bb0da; 
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s;
+        .navbar ul li {
+          margin: 1.5rem 0;
         }
 
-        .navbar a:hover {
-            color: #0bb0da;
+        .navbar ul li a {
+          font-size: 1.5rem;
+          color: #333;
         }
 
-        .navbar a:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
+        .navbar .menu-toggle {
+          display: block;
+          position: absolute;
+          top: 1.5rem;
+          right: 1.5rem;
+          cursor: pointer;
+          z-index: 1001;
         }
 
-        .hero {
-            height: 100vh;
-            background: linear-gradient(to bottom right, #e0f7fa, #80deea); 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #333;
-            text-align: center;
-            padding: 0 1rem;
+        .navbar .menu-toggle div {
+          width: 30px;
+          height: 3px;
+          background: #333;
+          margin: 5px 0;
+          transition: all 0.3s;
         }
 
-        .hero-content {
-            max-width: 600px;
-            width: 100%;
-            animation: fadeIn 1.5s ease-in-out;
+        .menu-toggle.active div:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active div:nth-child(2) {
+          opacity: 0;
+        }
+
+        .menu-toggle.active div:nth-child(3) {
+          transform: rotate(-45deg) translate(5px, -5px);
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+          font-size: 2.5rem;
         }
 
         .hero p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
+          font-size: 1.2rem;
         }
-
-        .hero .cta-button {
-            background-color: #0bb0da; 
-            color: white;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            transition: background-color 0.3s ease, transform 0.3s;
-            box-shadow: 0 4px 15px rgba(11, 176, 218, 0.3);
-        }
-
-        .hero .cta-button:hover {
-            background-color: #099abc; 
-            transform: scale(1.05);
-        }
-
-        .section {
-            padding: 5rem 2rem;
-            background-color: #f9f9f9;
-        }
-
-        .section:nth-of-type(even) {
-            background-color: #e6f2f5; 
-        }
-
-        .section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            position: relative;
-            color: #0bb0da;
-        }
-
-        .section h2::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: -10px;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background: #0bb0da;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            padding: 0 1rem;
-            justify-items: center;
-        }
-
-        .grid-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            width: 200px;
-        }
-
-        .grid-item img {
-            width: 100%;
-            height: auto;
-            transition: transform 0.5s;
-        }
-
-        .grid-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .grid-item a {
-            display: block;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .social-media-grid {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        .social-link {
-            background-color: #fff;
-            color: #0bb0da;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 700;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .social-link:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        footer {
-            background-color: #0bb0da;
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                justify-content: space-between;
-                padding: 2rem;
-            }
-
-            .navbar .logo {
-                font-size: 1.5rem;
-                font-weight: 700;
-                color: #0bb0da;
-                text-decoration: none;
-            }
-
-            .navbar ul {
-                flex-direction: column;
-                background: rgba(255, 255, 255, 0.98);
-                position: fixed;
-                top: 0;
-                left: -100%;
-                width: 80%;
-                height: 100%;
-                transition: left 0.3s ease-in-out;
-                padding-top: 5rem;
-                align-items: center;
-                box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            }
-
-            .navbar ul.active {
-                left: 0;
-            }
-
-            .navbar ul li {
-                margin: 1.5rem 0;
-            }
-
-            .navbar ul li a {
-                font-size: 1.5rem;
-                color: #333;
-            }
-
-            .navbar .menu-toggle {
-                display: block;
-                position: absolute;
-                top: 1.5rem;
-                right: 1.5rem;
-                cursor: pointer;
-                z-index: 1001;
-            }
-
-            .navbar .menu-toggle div {
-                width: 30px;
-                height: 3px;
-                background: #333;
-                margin: 5px 0;
-                transition: all 0.3s;
-            }
-
-            .menu-toggle.active div:nth-child(1) {
-                transform: rotate(45deg) translate(5px, 5px);
-            }
-
-            .menu-toggle.active div:nth-child(2) {
-                opacity: 0;
-            }
-
-            .menu-toggle.active div:nth-child(3) {
-                transform: rotate(-45deg) translate(5px, -5px);
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-        }
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <header>
-        <nav class="navbar">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#redes-sociais">Redes Sociais</a></li>
-                <li><a href="#logos">Logos</a></li>
-                <li><a href="#appsesites">Apps e Sites</a></li>
-                <li><a href="#banners-faixas">Banners e Faixas</a></li>
-                <li><a href="#grafica">Gráfico</a></li>
-                <li><a href="#digital">Digital</a></li>
-            </ul>
-            <div class="menu-toggle">
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </nav>
+      <nav class="navbar">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#redes-sociais">Redes Sociais</a></li>
+          <li><a href="#logos">Logos</a></li>
+          <li><a href="#appsesites">Apps e Sites</a></li>
+          <li><a href="#digital">Digital</a></li>
+          <li><a href="#banners-faixas">Banners e Faixas</a></li>
+          <li><a href="#grafica">Gráfico</a></li>
+        </ul>
+        <div class="menu-toggle">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </nav>
     </header>
 
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Bem-vindo ao meu Portfólio Profissional!</h1>
-            <p>Descubra meus trabalhos em design gráfico e projetos recentes.</p>
-            <a href="#redes-sociais" class="cta-button">Explorar</a>
-        </div>
+      <div class="hero-content">
+        <h1>Bem-vindo ao meu Portfólio Profissional!</h1>
+        <p>Descubra meus trabalhos em design gráfico e projetos recentes.</p>
+        <a href="#redes-sociais" class="cta-button">Explorar</a>
+      </div>
     </section>
 
     <section id="redes-sociais" class="section">
-        <h2>Redes Sociais</h2>
-        <div class="social-media-grid">
-            <a href="https://www.instagram.com/igoroliveira_____/profilecard/?igsh=bXpkYW1obHB0Z2Nn" class="social-link">Instagram</a>
-            <a href="https://www.linkedin.com/in/igor-oliveira-9801a126a/" class="social-link">LinkedIn</a>
-            <a href="https://github.com/igorOliveiraaa" class="social-link">GitHub</a>
-        </div>
+      <h2>Redes Sociais</h2>
+      <div class="social-media-grid">
+        <a
+          href="https://www.instagram.com/igoroliveira_____/profilecard/?igsh=bXpkYW1obHB0Z2Nn"
+          class="social-link"
+          >Instagram</a
+        >
+        <a href="https://www.linkedin.com/in/igor-oliveira-9801a126a/" class="social-link"
+          >LinkedIn</a
+        >
+        <a href="https://github.com/igorOliveiraaa" class="social-link">GitHub</a>
+      </div>
     </section>
 
     <section id="logos" class="section">
-        <h2>Logos</h2>
-        <div class="grid">
-            <div class="grid-item"><img src="./logos/1.png" alt="Logo 1"></div>
-            <div class="grid-item"><img src="./logos/2.png" alt="Logo 2"></div>
-            <div class="grid-item"><img src="./logos/3.png" alt="Logo 3"></div>
-            <div class="grid-item"><img src="./logos/4.png" alt="Logo 4"></div>
-            <div class="grid-item"><img src="./logos/5.png" alt="Logo 5"></div>
-            <div class="grid-item"><img src="./logos/6.png" alt="Logo 6"></div>
-            <div class="grid-item"><img src="./logos/7.png" alt="Logo 7"></div>
-            <div class="grid-item"><img src="./logos/8.png" alt="Logo 8"></div>
-            <div class="grid-item"><img src="./logos/9.png" alt="Logo 9"></div>
-            <div class="grid-item"><img src="./logos/10.png" alt="Logo 10"></div>
-            <div class="grid-item"><img src="./logos/11.png" alt="Logo 11"></div>
-            <div class="grid-item"><img src="./logos/12.png" alt="Logo 12"></div>
-            <div class="grid-item"><img src="./logos/13.png" alt="Logo 13"></div>
-            <div class="grid-item"><img src="./logos/14.png" alt="Logo 13"></div>
-        </div>
+      <h2>Logos</h2>
+      <div class="grid">
+        <div class="grid-item"><img src="./logos/1.png" alt="Logo 1" /></div>
+        <div class="grid-item"><img src="./logos/2.png" alt="Logo 2" /></div>
+        <div class="grid-item"><img src="./logos/3.png" alt="Logo 3" /></div>
+        <div class="grid-item"><img src="./logos/4.png" alt="Logo 4" /></div>
+        <div class="grid-item"><img src="./logos/5.png" alt="Logo 5" /></div>
+        <div class="grid-item"><img src="./logos/6.png" alt="Logo 6" /></div>
+        <div class="grid-item"><img src="./logos/7.png" alt="Logo 7" /></div>
+        <div class="grid-item"><img src="./logos/8.png" alt="Logo 8" /></div>
+        <div class="grid-item"><img src="./logos/9.png" alt="Logo 9" /></div>
+        <div class="grid-item"><img src="./logos/10.png" alt="Logo 10" /></div>
+        <div class="grid-item"><img src="./logos/11.png" alt="Logo 11" /></div>
+        <div class="grid-item"><img src="./logos/12.png" alt="Logo 12" /></div>
+        <div class="grid-item"><img src="./logos/13.png" alt="Logo 13" /></div>
+        <div class="grid-item"><img src="./logos/14.png" alt="Logo 13" /></div>
+      </div>
     </section>
 
     <section id="appsesites" class="section">
-        <h2>Apps e Sites (Clique na imagem para abrir o protótipo ou o site)</h2>
-        <div class="grid">
-            <div class="grid-item">
-                <a href="https://www.canva.com/design/DAFJH2dbRpk/he3Fr8kA_wXfu4laIrym9Q/watch?utm_content=DAFJH2dbRpk&utm_campaign=designshare&utm_medium=link&utm_source=editor" target="_blank">
-                    <img src="./appsesites/1.png" alt="Agenda">
-                </a>
-            </div>
-            <div class="grid-item">
-                <a href="https://igoroliveiraaa.github.io/Finveic/contato.html" target="_blank">
-                    <img src="./appsesites/4.png" alt="TokTrends">
-                </a>
-            </div>
-            <div class="grid-item">
-                <a href="https://toktrendsbrasil.com/" target="_blank">
-                    <img src="./appsesites/3.png" alt="Finveic">
-                </a>
-            </div>
-            <div class="grid-item">
-                <a href="https://www.figma.com/design/S12pwqUYF8awXAY3yBH48O/Prot%C3%B3tipo-ProntPet?m=auto&t=R2QtylqRyjy0PAML-1" target="_blank">
-                    <img src="./appsesites/2.png" alt="PetPront">
-                </a>
-            </div>
-            <div class="grid-item">
-                <a href="https://www.canva.com/design/DAFL4bsjBfQ/mEsoUNpPREc85lL9EDHJ9g/watch?utm_content=DAFL4bsjBfQ&utm_campaign=designshare&utm_medium=link&utm_source=editor" target="_blank">
-                    <img src="./appsesites/5.png" alt="Calculadora">
-                </a>
-            </div>
+      <h2>Apps e Sites (Clique na imagem para abrir o protótipo ou o site)</h2>
+      <div class="grid">
+        <div class="grid-item">
+          <a
+            href="https://www.canva.com/design/DAFJH2dbRpk/he3Fr8kA_wXfu4laIrym9Q/watch?utm_content=DAFJH2dbRpk&utm_campaign=designshare&utm_medium=link&utm_source=editor"
+            target="_blank"
+          >
+            <img src="./appsesites/1.png" alt="Agenda" />
+          </a>
         </div>
-    </section>
-
-        <section id="banners-faixas" class="section">
-            <h2>Banners & Faixas</h2>
-            <div class="grid">
-                <div class="grid-item"><img src="./bannersefaixas/0.png" alt="Banner 0"></div>
-                <div class="grid-item"><img src="./bannersefaixas/1.png" alt="Banner 1"></div>
-                <div class="grid-item"><img src="./bannersefaixas/2.png" alt="Banner 2"></div>
-                <div class="grid-item"><img src="./bannersefaixas/3.png" alt="Banner 3"></div>
-                <div class="grid-item"><img src="./bannersefaixas/4.png" alt="Banner 4"></div>
-                <div class="grid-item"><img src="./bannersefaixas/5.png" alt="Banner 5"></div>
-                <div class="grid-item"><img src="./bannersefaixas/6.png" alt="Banner 6"></div>
-            </div>
-        </section>
-
-    <section id="grafica" class="section">
-        <h2>Gráfico</h2>
-        <div class="grid">
-            <div class="grid-item"><img src="./grafica/1.png" alt="Grafica"></div>
-            <div class="grid-item"><img src="./grafica/2.png" alt="Grafica"></div>
-            <div class="grid-item"><img src="./grafica/3.png" alt="Grafica"></div>
-            <div class="grid-item"><img src="./grafica/4.png" alt="Grafica"></div>
-            <div class="grid-item"><img src="./grafica/5.png" alt="Grafica"></div>
-            <div class="grid-item"><img src="./grafica/6.png" alt="Grafica"></div>
-            <div class="grid-item"><img src="./grafica/7.png" alt="Grafica"></div>
-            <div class="grid-item"><img src="./grafica/8.png" alt="Grafica"></div>
-            <div class="grid-item"><img src="./grafica/9.png" alt="Grafica"></div>
-            <div class="grid-item"><img src="./grafica/10.png" alt="Grafica"></div>
+        <div class="grid-item">
+          <a href="https://igoroliveiraaa.github.io/Finveic/contato.html" target="_blank">
+            <img src="./appsesites/4.png" alt="TokTrends" />
+          </a>
         </div>
+        <div class="grid-item">
+          <a href="https://toktrendsbrasil.com/" target="_blank">
+            <img src="./appsesites/3.png" alt="Finveic" />
+          </a>
+        </div>
+        <div class="grid-item">
+          <a
+            href="https://www.figma.com/design/S12pwqUYF8awXAY3yBH48O/Prot%C3%B3tipo-ProntPet?m=auto&t=R2QtylqRyjy0PAML-1"
+            target="_blank"
+          >
+            <img src="./appsesites/2.png" alt="PetPront" />
+          </a>
+        </div>
+        <div class="grid-item">
+          <a
+            href="https://www.canva.com/design/DAFL4bsjBfQ/mEsoUNpPREc85lL9EDHJ9g/watch?utm_content=DAFL4bsjBfQ&utm_campaign=designshare&utm_medium=link&utm_source=editor"
+            target="_blank"
+          >
+            <img src="./appsesites/5.png" alt="Calculadora" />
+          </a>
+        </div>
+      </div>
     </section>
 
     <section id="digital" class="section">
-        <h2>Digital</h2>
-        <div class="grid">
-            <div class="grid-item"><img src="./digital/1.png" alt="Digital"></div>
-            <div class="grid-item"><img src="./digital/2.png" alt="Digital"></div>
-            <div class="grid-item"><img src="./digital/3.png" alt="Digital"></div>
-            <div class="grid-item"><img src="./digital/4.png" alt="Digital"></div>
-            <div class="grid-item"><img src="./digital/5.png" alt="Digital"></div>
-            <div class="grid-item"><img src="./digital/6.png" alt="Digital"></div>
-            <div class="grid-item"><img src="./digital/7.png" alt="Digital"></div>
-            <div class="grid-item"><img src="./digital/8.png" alt="Digital"></div>
-            <div class="grid-item"><img src="./digital/9.png" alt="Digital"></div>
-            <div class="grid-item"><img src="./digital/10.png" alt="Digital"></div>
-            <div class="grid-item"><img src="./digital/11.png" alt="Digital"></div>
-            <div class="grid-item"><img src="./digital/12.png" alt="Digital"></div>
-            <div class="grid-item"><img src="./digital/13.png" alt="Digital"></div>
-        </div>
+      <h2>Digital</h2>
+      <div class="grid">
+        <div class="grid-item"><img src="./digital/1.png" alt="Digital" /></div>
+        <div class="grid-item"><img src="./digital/2.png" alt="Digital" /></div>
+        <div class="grid-item"><img src="./digital/3.png" alt="Digital" /></div>
+        <div class="grid-item"><img src="./digital/4.png" alt="Digital" /></div>
+        <div class="grid-item"><img src="./digital/5.png" alt="Digital" /></div>
+        <div class="grid-item"><img src="./digital/6.png" alt="Digital" /></div>
+        <div class="grid-item"><img src="./digital/7.png" alt="Digital" /></div>
+        <div class="grid-item"><img src="./digital/8.png" alt="Digital" /></div>
+        <div class="grid-item"><img src="./digital/9.png" alt="Digital" /></div>
+        <div class="grid-item"><img src="./digital/10.png" alt="Digital" /></div>
+        <div class="grid-item"><img src="./digital/11.png" alt="Digital" /></div>
+        <div class="grid-item"><img src="./digital/12.png" alt="Digital" /></div>
+        <div class="grid-item"><img src="./digital/13.png" alt="Digital" /></div>
+      </div>
+    </section>
+
+    <section id="banners-faixas" class="section">
+      <h2>Banners & Faixas</h2>
+      <div class="grid">
+        <div class="grid-item"><img src="./bannersefaixas/0.png" alt="Banner 0" /></div>
+        <div class="grid-item"><img src="./bannersefaixas/1.png" alt="Banner 1" /></div>
+        <div class="grid-item"><img src="./bannersefaixas/2.png" alt="Banner 2" /></div>
+        <div class="grid-item"><img src="./bannersefaixas/3.png" alt="Banner 3" /></div>
+        <div class="grid-item"><img src="./bannersefaixas/4.png" alt="Banner 4" /></div>
+        <div class="grid-item"><img src="./bannersefaixas/5.png" alt="Banner 5" /></div>
+        <div class="grid-item"><img src="./bannersefaixas/6.png" alt="Banner 6" /></div>
+      </div>
+    </section>
+
+    <section id="grafica" class="section">
+      <h2>Gráfico</h2>
+      <div class="grid">
+        <div class="grid-item"><img src="./grafica/1.png" alt="Grafica" /></div>
+        <div class="grid-item"><img src="./grafica/2.png" alt="Grafica" /></div>
+        <div class="grid-item"><img src="./grafica/3.png" alt="Grafica" /></div>
+        <div class="grid-item"><img src="./grafica/4.png" alt="Grafica" /></div>
+        <div class="grid-item"><img src="./grafica/5.png" alt="Grafica" /></div>
+        <div class="grid-item"><img src="./grafica/6.png" alt="Grafica" /></div>
+        <div class="grid-item"><img src="./grafica/7.png" alt="Grafica" /></div>
+        <div class="grid-item"><img src="./grafica/8.png" alt="Grafica" /></div>
+        <div class="grid-item"><img src="./grafica/9.png" alt="Grafica" /></div>
+        <div class="grid-item"><img src="./grafica/10.png" alt="Grafica" /></div>
+      </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Igor Oliveira. Todos os direitos reservados.</p>
+      <p>&copy; 2024 Igor Oliveira. Todos os direitos reservados.</p>
     </footer>
 
     <script>
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            header.classList.toggle('sticky', window.scrollY > 0);
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        header.classList.toggle("sticky", window.scrollY > 0);
+      });
+
+      const menuToggle = document.querySelector(".menu-toggle");
+      const navbarUl = document.querySelector(".navbar ul");
+
+      menuToggle.addEventListener("click", () => {
+        navbarUl.classList.toggle("active");
+        menuToggle.classList.toggle("active");
+      });
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+
+          if (navbarUl.classList.contains("active")) {
+            navbarUl.classList.remove("active");
+            menuToggle.classList.remove("active");
+          }
         });
-
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navbarUl = document.querySelector('.navbar ul');
-
-        menuToggle.addEventListener('click', () => {
-            navbarUl.classList.toggle('active');
-            menuToggle.classList.toggle('active');
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-
-                if (navbarUl.classList.contains('active')) {
-                    navbarUl.classList.remove('active');
-                    menuToggle.classList.remove('active');
-                }
-            });
-        });
+      });
     </script>
-</body>
+  </body>
 </html>
