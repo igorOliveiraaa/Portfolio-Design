@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
     <style>
+        /* Estilos Globais */
         *, *::before, *::after {
             margin: 0;
             padding: 0;
@@ -21,6 +22,7 @@
             scroll-behavior: smooth; 
         }
 
+        /* Estilos do Header e Navbar */
         header {
             position: fixed;
             width: 100%;
@@ -74,6 +76,7 @@
             transform-origin: left;
         }
 
+        /* Estilos da Seção Hero */
         .hero {
             height: 100vh;
             background: linear-gradient(to bottom right, #e0f7fa, #80deea); 
@@ -117,6 +120,7 @@
             transform: scale(1.05);
         }
 
+        /* Estilos das Seções */
         .section {
             padding: 5rem 2rem;
             background-color: #f9f9f9;
@@ -144,6 +148,39 @@
             background: #0bb0da;
         }
 
+        /* Estilos da Grade */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+            justify-items: center;
+        }
+
+        .grid-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            width: 200px;
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s;
+        }
+
+        .grid-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .grid-item a {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Estilos dos Links de Mídia Social */
         .social-media-grid {
             display: flex;
             justify-content: center;
@@ -168,30 +205,7 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            padding: 0 1rem;
-        }
-
-        .grid-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .grid-item img {
-            width: 100%;
-            height: auto;
-            transition: transform 0.5s;
-        }
-
-        .grid-item:hover img {
-            transform: scale(1.1);
-        }
-
+        /* Estilos do Footer */
         footer {
             background-color: #0bb0da;
             color: white;
@@ -199,11 +213,13 @@
             text-align: center;
         }
 
+        /* Animações */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* Estilos Responsivos */
         @media (max-width: 768px) {
             .navbar {
                 justify-content: space-between;
@@ -285,16 +301,17 @@
 </head>
 <body>
 
+    <!-- Header e Navbar -->
     <header>
         <nav class="navbar">
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#logos">Logos</a></li>
                 <li><a href="#redes-sociais">Redes Sociais</a></li>
-                <li><a href="#banners-faixas">Banners e Faixas</a></li>
+                <li><a href="#logos">Logos</a></li>
                 <li><a href="#appsesites">Apps e Sites</a></li>
-                <li><a href="#grafica">Gráfica</a></li>
-                <li><a href="#outros">Outros</a></li>
+                <li><a href="#banners-faixas">Banners e Faixas</a></li>
+                <li><a href="#grafica">Gráfico</a></li>
+                <li><a href="#digital">Digital</a></li>
             </ul>
             <div class="menu-toggle">
                 <div></div>
@@ -320,54 +337,91 @@
         </div>
     </section>
 
+    <!-- Seção Logos -->
     <section id="logos" class="section">
         <h2>Logos</h2>
         <div class="grid">
-            <div class="grid-item"><img src="./logos/1.png" alt="Logo"></div>
-            <div class="grid-item"><img src="./logos/2.png" alt="Logo"></div>
-            <div class="grid-item"><img src="./logos/3.png" alt="Logo"></div>
-            <div class="grid-item"><img src="./logos/4.png" alt="Logo"></div>
-            <div class="grid-item"><img src="./logos/5.png" alt="Logo"></div>
-            <div class="grid-item"><img src="./logos/6.png" alt="Logo"></div>
-            <div class="grid-item"><img src="./logos/7.png" alt="Logo"></div>
-            <div class="grid-item"><img src="./logos/8.png" alt="Logo"></div>
-            <div class="grid-item"><img src="./logos/9.png" alt="Logo"></div>
-            <div class="grid-item"><img src="./logos/10.png" alt="Logo"></div>
-            <div class="grid-item"><img src="./logos/11.png" alt="Logo"></div>
-            <div class="grid-item"><img src="./logos/12.png" alt="Logo"></div>
-            <div class="grid-item"><img src="./logos/13.png" alt="Logo"></div>
-        </div>
-    </section>
-
-    <section id="banners-faixas" class="section">
-        <h2>Banners & Faixas</h2>
-        <div class="grid">
-            <div class="grid-item"><img src="./bannersefaixas/" alt="BannersFaixas"></div>
-            <!-- ... -->
+            <div class="grid-item"><img src="./logos/1.png" alt="Logo 1"></div>
+            <div class="grid-item"><img src="./logos/2.png" alt="Logo 2"></div>
+            <div class="grid-item"><img src="./logos/3.png" alt="Logo 3"></div>
+            <div class="grid-item"><img src="./logos/4.png" alt="Logo 4"></div>
+            <div class="grid-item"><img src="./logos/5.png" alt="Logo 5"></div>
+            <div class="grid-item"><img src="./logos/6.png" alt="Logo 6"></div>
+            <div class="grid-item"><img src="./logos/7.png" alt="Logo 7"></div>
+            <div class="grid-item"><img src="./logos/8.png" alt="Logo 8"></div>
+            <div class="grid-item"><img src="./logos/9.png" alt="Logo 9"></div>
+            <div class="grid-item"><img src="./logos/10.png" alt="Logo 10"></div>
+            <div class="grid-item"><img src="./logos/11.png" alt="Logo 11"></div>
+            <div class="grid-item"><img src="./logos/12.png" alt="Logo 12"></div>
+            <div class="grid-item"><img src="./logos/13.png" alt="Logo 13"></div>
+            <div class="grid-item"><img src="./logos/14.png" alt="Logo 13"></div>
         </div>
     </section>
 
     <section id="appsesites" class="section">
-        <h2>Apps e Sites</h2>
+        <h2>Apps e Sites (Clique na imagem para abrir o protótipo ou o site)</h2>
         <div class="grid">
-            <div class="grid-item"><img src="./appsesites/" alt="AppseSites"></div>
-            <!-- ... -->
+            <div class="grid-item">
+                <a href="https://www.canva.com/design/DAFJH2dbRpk/he3Fr8kA_wXfu4laIrym9Q/watch?utm_content=DAFJH2dbRpk&utm_campaign=designshare&utm_medium=link&utm_source=editor" target="_blank">
+                    <img src="./appsesites/1.png" alt="Agenda">
+                </a>
+            </div>
+            <div class="grid-item">
+                <a href="https://igoroliveiraaa.github.io/Finveic/contato.html" target="_blank">
+                    <img src="./appsesites/4.png" alt="TokTrends">
+                </a>
+            </div>
+            <div class="grid-item">
+                <a href="https://toktrendsbrasil.com/" target="_blank">
+                    <img src="./appsesites/3.png" alt="Finveic">
+                </a>
+            </div>
+            <div class="grid-item">
+                <a href="https://www.figma.com/design/S12pwqUYF8awXAY3yBH48O/Prot%C3%B3tipo-ProntPet?m=auto&t=R2QtylqRyjy0PAML-1" target="_blank">
+                    <img src="./appsesites/2.png" alt="PetPront">
+                </a>
+            </div>
+            <div class="grid-item">
+                <a href="https://www.canva.com/design/DAFL4bsjBfQ/mEsoUNpPREc85lL9EDHJ9g/watch?utm_content=DAFL4bsjBfQ&utm_campaign=designshare&utm_medium=link&utm_source=editor" target="_blank">
+                    <img src="./appsesites/5.png" alt="Calculadora">
+                </a>
+            </div>
         </div>
     </section>
+
+        <section id="banners-faixas" class="section">
+            <h2>Banners & Faixas</h2>
+            <div class="grid">
+                <div class="grid-item"><img src="./bannersefaixas/0.png" alt="Banner 0"></div>
+                <div class="grid-item"><img src="./bannersefaixas/1.png" alt="Banner 1"></div>
+                <div class="grid-item"><img src="./bannersefaixas/2.png" alt="Banner 2"></div>
+                <div class="grid-item"><img src="./bannersefaixas/3.png" alt="Banner 3"></div>
+                <div class="grid-item"><img src="./bannersefaixas/4.png" alt="Banner 4"></div>
+                <div class="grid-item"><img src="./bannersefaixas/5.png" alt="Banner 5"></div>
+                <div class="grid-item"><img src="./bannersefaixas/6.png" alt="Banner 6"></div>
+            </div>
+        </section>
 
     <section id="grafica" class="section">
-        <h2>Gráfica</h2>
+        <h2>Gráfico</h2>
         <div class="grid">
-            <div class="grid-item"><img src="./grafica/" alt="Grafica"></div>
-            <!-- ... -->
+            <div class="grid-item"><img src="./grafica/1.png" alt="Grafica"></div>
+            <div class="grid-item"><img src="./grafica/2.png" alt="Grafica"></div>
+            <div class="grid-item"><img src="./grafica/3.png" alt="Grafica"></div>
+            <div class="grid-item"><img src="./grafica/4.png" alt="Grafica"></div>
+            <div class="grid-item"><img src="./grafica/5.png" alt="Grafica"></div>
+            <div class="grid-item"><img src="./grafica/6.png" alt="Grafica"></div>
+            <div class="grid-item"><img src="./grafica/7.png" alt="Grafica"></div>
+            <div class="grid-item"><img src="./grafica/8.png" alt="Grafica"></div>
+            <div class="grid-item"><img src="./grafica/9.png" alt="Grafica"></div>
+            <div class="grid-item"><img src="./grafica/10.png" alt="Grafica"></div>
         </div>
     </section>
 
-    <section id="outros" class="section">
-        <h2>Outros</h2>
+    <section id="digital" class="section">
+        <h2>Digital</h2>
         <div class="grid">
-            <div class="grid-item"><img src="./outros/" alt="Outros"></div>
-            <!-- ... -->
+            <div class="grid-item"><img src="./digital/1.png" alt="Digital"></div>
         </div>
     </section>
 
